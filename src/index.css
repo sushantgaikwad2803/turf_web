@@ -1,0 +1,36 @@
+/* src/index.css */
+
+/* 1. Reset margins and padding globally */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 2. Set up the body to take up the full screen */
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #F7F8FC;
+  font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+  color: #0B1220;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* 3. The root React container must be 100% width */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 4. Remove default link and button styles */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}

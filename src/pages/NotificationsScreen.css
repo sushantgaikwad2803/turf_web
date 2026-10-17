@@ -1,0 +1,57 @@
+/* NotificationsScreen.css */
+.nf-safe { min-height: 100vh; background: #F7F8FC; font-family: 'Poppins', system-ui, sans-serif; color: #0B1220; }
+.nf-container { max-width: 640px; margin: 0 auto; padding: 12px 18px 60px; }
+
+.nf-header-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; }
+.nf-header-left { flex: 1; margin-right: 12px; }
+.nf-header-badge { display: inline-block; padding: 6px 12px; border-radius: 20px; background: #F4FBE6; border: 1px solid #ECEEF4; color: #6F9D28; font-size: 10px; font-weight: 800; letter-spacing: 1.4px; margin-bottom: 10px; }
+.nf-header-title-row { display: flex; align-items: center; }
+.nf-header-title { font-size: 26px; font-weight: 800; margin: 0; letter-spacing: -0.4px; }
+.nf-header-subtitle { font-size: 12px; color: #8A92A3; margin: 5px 0 0; }
+.nf-unread-badge { min-width: 26px; height: 26px; border-radius: 13px; padding: 0 8px; background: #C7F36B; color: #0B1220; font-size: 11px; font-weight: 900; display: inline-flex; align-items: center; justify-content: center; margin-left: 10px; box-shadow: 0 3px 7px rgba(135,185,54,0.22); }
+.nf-mark-read-button { background: #F4FBE6; border: 1px solid #ECEEF4; color: #6F9D28; padding: 10px 14px; border-radius: 20px; font-size: 10px; font-weight: 800; letter-spacing: 1px; margin-top: 4px; cursor: pointer; font-family: inherit; }
+.nf-mark-read-button:disabled { background: #F1F3F8; border-color: #E6E8EF; color: #8A92A3; cursor: not-allowed; }
+
+.nf-filter-row { display: flex; gap: 8px; margin-bottom: 14px; overflow-x: auto; padding-bottom: 4px; }
+.nf-filter-chip { display: flex; align-items: center; gap: 7px; min-height: 46px; padding: 0 15px; border-radius: 23px; border: 1px solid #E6E8EF; background: #fff; color: #5E6677; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap; font-family: inherit; }
+.nf-filter-chip.active { background: #C7F36B; border-color: #C7F36B; color: #0B1220; font-weight: 800; box-shadow: 0 5px 9px rgba(135,185,54,0.20); }
+.nf-filter-count { min-width: 20px; height: 20px; border-radius: 10px; padding: 0 5px; background: #F1F3F8; border: 1px solid #ECEEF4; color: #5E6677; font-size: 10px; font-weight: 800; display: inline-flex; align-items: center; justify-content: center; }
+.nf-filter-count.active { background: rgba(11,18,32,0.12); border-color: rgba(11,18,32,0.16); color: #0B1220; }
+
+.nf-error-banner { display: flex; align-items: center; justify-content: space-between; background: #FEF2F2; border: 1px solid #FECACA; border-radius: 14px; padding: 10px 13px; margin-bottom: 12px; }
+.nf-error-banner-text { color: #B91C1C; font-size: 11px; font-weight: 500; flex: 1; margin-right: 10px; }
+.nf-error-retry { color: #B91C1C; font-size: 10px; font-weight: 800; letter-spacing: 0.8px; background: transparent; border: none; cursor: pointer; }
+
+.nf-section-header { display: flex; justify-content: space-between; align-items: center; margin: 6px 0 14px; }
+.nf-section-title-row { display: flex; align-items: center; }
+.nf-section-title { font-size: 15px; font-weight: 800; margin: 0; }
+.nf-section-accent { width: 6px; height: 6px; border-radius: 3px; background: #C7F36B; margin-left: 8px; }
+.nf-clear-text { font-size: 10px; font-weight: 800; color: #B91C1C; letter-spacing: 1px; background: transparent; border: none; cursor: pointer; }
+
+.nf-list-container { padding-top: 2px; padding-bottom: 20px; display: flex; flex-direction: column; gap: 11px; }
+.nf-refresh-inline { align-self: flex-end; background: #F4FBE6; border: 1px solid #ECEEF4; color: #6F9D28; font-size: 11px; font-weight: 800; padding: 6px 12px; border-radius: 20px; cursor: pointer; margin-bottom: 4px; font-family: inherit; }
+.nf-refresh-inline:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.nf-notification-card { position: relative; display: flex; align-items: flex-start; background: #fff; border: 1px solid #E6E8EF; padding: 15px; border-radius: 22px; text-align: left; cursor: pointer; width: 100%; font-family: inherit; box-shadow: 0 5px 13px rgba(11,18,32,0.055); }
+.nf-notification-card:hover { border-color: #D9DCE7; }
+.nf-notification-card.unread { background: #FAFDF4; border-color: #D9EDA4; }
+.nf-unread-dot { position: absolute; top: 14px; right: 14px; width: 8px; height: 8px; border-radius: 4px; background: #87B936; }
+
+.nf-icon-container { width: 48px; height: 48px; border-radius: 17px; border: 1px solid; display: flex; align-items: center; justify-content: center; margin-right: 13px; flex-shrink: 0; }
+.nf-icon-text { font-size: 20px; font-weight: 800; }
+.nf-content-container { flex: 1; padding-right: 14px; min-width: 0; }
+.nf-title-row { display: flex; align-items: flex-start; margin-bottom: 6px; }
+.nf-notification-title { flex: 1; font-size: 13px; line-height: 1.5; color: #5E6677; font-weight: 600; margin-right: 8px; }
+.nf-notification-title.unread { font-weight: 800; color: #0B1220; }
+.nf-timestamp { font-size: 10px; color: #8A92A3; flex-shrink: 0; }
+.nf-notification-message { font-size: 11px; line-height: 1.6; color: #5E6677; margin: 0; }
+.nf-new-badge { align-self: flex-start; margin-top: 9px; padding: 4px 10px; border-radius: 12px; background: #C7F36B; color: #0B1220; font-size: 9px; font-weight: 800; letter-spacing: 1px; }
+
+.nf-loading-container, .nf-empty-container { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 30px; text-align: center; }
+.nf-loading-icon-container, .nf-empty-icon-container { width: 96px; height: 96px; border-radius: 30px; background: #F4FBE6; border: 1px solid #ECEEF4; display: flex; align-items: center; justify-content: center; font-size: 42px; margin-bottom: 20px; }
+.nf-empty-title { font-size: 20px; font-weight: 800; margin: 0 0 10px; }
+.nf-empty-subtitle { font-size: 13px; color: #8A92A3; text-align: center; margin: 0; }
+.nf-retry-button { margin-top: 18px; padding: 10px 18px; border-radius: 20px; border: 1px solid #A8D94F; background: #C7F36B; color: #0B1220; font-size: 10px; font-weight: 800; letter-spacing: 0.8px; cursor: pointer; font-family: inherit; }
+
+.nf-spinner { display: inline-block; width: 28px; height: 28px; border: 2px solid #ECEEF4; border-top-color: #6F9D28; border-radius: 50%; animation: nf-spin 0.7s linear infinite; }
+@keyframes nf-spin { to { transform: rotate(360deg); } }

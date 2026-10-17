@@ -1,0 +1,125 @@
+/* SlotScreen.css */
+.ss-safe { min-height: 100vh; background: #F7F8FC; font-family: 'Poppins', system-ui, sans-serif; color: #0B1220; }
+.ss-container { max-width: 720px; margin: 0 auto; position: relative; }
+.ss-center { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 25px; }
+.ss-error-text { font-size: 17px; font-weight: 800; margin-bottom: 20px; }
+.ss-back-button { padding: 13px 26px; border-radius: 15px; background: #C7F36B; border: none; font-weight: 900; cursor: pointer; font-family: inherit; }
+
+.ss-header { height: 64px; padding: 0 18px; background: #fff; border-bottom: 1px solid #E6E8EF; display: flex; align-items: center; gap: 10px; position: sticky; top: 0; z-index: 30; }
+.ss-icon-button { width: 44px; height: 44px; border-radius: 15px; border: 1px solid #E6E8EF; background: #fff; font-size: 22px; font-weight: 700; cursor: pointer; font-family: inherit; box-shadow: 0 4px 10px rgba(11,18,32,0.06); }
+.ss-header-center { flex: 1; text-align: center; }
+.ss-header-title { font-size: 17px; font-weight: 900; margin: 0; }
+.ss-header-subtitle { font-size: 11px; color: #8A92A3; margin: 3px 0 0; }
+
+.ss-scroll-content { padding: 14px 18px 140px; }
+
+.ss-section-title-row { display: flex; align-items: center; margin: 18px 0 12px; }
+.ss-section-title { font-size: 17px; font-weight: 800; margin: 0; }
+.ss-section-accent { width: 6px; height: 6px; border-radius: 3px; background: #C7F36B; margin-left: 8px; }
+
+.ss-horizontal-scroll { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 4px; }
+
+.ss-court-chip, .ss-date-chip { flex-shrink: 0; background: #fff; border: 1px solid #E6E8EF; border-radius: 18px; box-shadow: 0 4px 10px rgba(11,18,32,0.05); cursor: pointer; font-family: inherit; }
+.ss-court-chip { min-width: 108px; padding: 12px 16px; text-align: left; }
+.ss-court-chip.active { background: #C7F36B; border-color: #C7F36B; box-shadow: 0 6px 12px rgba(135,185,54,0.20); }
+.ss-court-name { display: block; font-size: 14px; font-weight: 800; color: #0B1220; }
+.ss-court-price { display: block; font-size: 12px; font-weight: 700; color: #6F9D28; margin-top: 4px; }
+.ss-date-chip { min-width: 92px; padding: 12px 14px; font-size: 12px; font-weight: 800; color: #5E6677; text-align: center; }
+.ss-date-chip.active { background: #C7F36B; border-color: #C7F36B; color: #0B1220; box-shadow: 0 6px 12px rgba(135,185,54,0.20); }
+
+.ss-multi-date-info { margin-top: 12px; padding: 12px; border-radius: 14px; background: #FAFDF4; border: 1px solid #D9EDA4; text-align: center; font-size: 11px; font-weight: 700; color: #6F9D28; }
+
+.ss-slot-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-top: 20px; }
+.ss-slot-header-left { flex: 1; min-width: 0; }
+.ss-slot-subtitle { font-size: 12px; color: #8A92A3; margin: 5px 0 0; }
+.ss-full-day-button { display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-radius: 14px; background: #FFFBEB; border: 1px solid #FDE68A; color: #92400E; font-size: 12px; font-weight: 800; cursor: pointer; margin-top: 18px; font-family: inherit; white-space: nowrap; }
+
+.ss-banner { margin-top: 14px; padding: 14px; border-radius: 16px; background: #FAFDF4; border: 1px solid #D9EDA4; display: flex; align-items: center; gap: 10px; }
+.ss-banner-icon { font-size: 18px; }
+.ss-banner-title { font-size: 13px; font-weight: 800; color: #6F9D28; margin: 0; }
+.ss-banner-text { font-size: 11px; color: #5E6677; margin: 3px 0 0; line-height: 1.5; }
+
+.ss-loading-box { min-height: 220px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.ss-loading-text { margin-top: 12px; color: #8A92A3; font-size: 13px; font-weight: 600; }
+
+.ss-empty-box { padding: 26px; margin-top: 14px; border-radius: 18px; background: #fff; border: 1px solid #E6E8EF; text-align: center; box-shadow: 0 5px 12px rgba(11,18,32,0.05); }
+.ss-empty-title { font-size: 16px; font-weight: 800; margin: 0; }
+.ss-empty-text { font-size: 12px; color: #8A92A3; margin: 6px 0 0; line-height: 1.5; }
+
+.ss-slot-grid { margin-top: 14px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+
+.ss-slot-card { height: 88px; padding: 7px 8px; border-radius: 12px; background: #fff; border: 1px solid #E6E8EF; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; text-align: left; font-family: inherit; box-shadow: 0 3px 6px rgba(11,18,32,0.04); }
+.ss-slot-card.disabled { background: #F1F3F8; border-color: #ECEEF4; cursor: not-allowed; opacity: 0.7; box-shadow: none; }
+.ss-slot-card.selected { background: #C7F36B; border-color: #C7F36B; box-shadow: 0 5px 10px rgba(135,185,54,0.22); }
+
+.ss-slot-top-row { display: flex; align-items: center; justify-content: space-between; gap: 3px; }
+.ss-slot-start-time { font-size: 11px; font-weight: 900; color: #0B1220; letter-spacing: -0.2px; flex: 1; }
+.ss-night-badge { min-width: 14px; height: 14px; padding: 0 3px; border-radius: 7px; background: #FFFBEB; border: 1px solid #FDE68A; display: inline-flex; align-items: center; justify-content: center; font-size: 8px; font-weight: 900; color: #92400E; }
+.ss-night-badge.selected { background: rgba(11,18,32,0.16); border-color: rgba(11,18,32,0.24); color: #0B1220; }
+.ss-night-badge.disabled { opacity: 0.6; }
+
+.ss-slot-end-time { font-size: 9px; font-weight: 500; color: #8A92A3; }
+.ss-slot-price { font-size: 12px; font-weight: 900; color: #6F9D28; margin-top: 3px; letter-spacing: -0.2px; }
+.ss-slot-card.selected .ss-slot-price { color: #0B1220; }
+.ss-slot-card.disabled .ss-slot-price { color: #8A92A3; }
+.ss-slot-status { font-size: 7px; font-weight: 800; color: #6F9D28; letter-spacing: 0.4px; margin-top: 1px; }
+.ss-slot-status.past { color: #8A92A3; }
+.ss-slot-status.booked { color: #B91C1C; }
+.ss-slot-status.selected { color: #0B1220; }
+
+.ss-selected-info { margin-top: 16px; padding: 16px; border-radius: 18px; background: #FAFDF4; border: 1px solid #D9EDA4; }
+.ss-selected-info-title { font-size: 14px; font-weight: 800; color: #6F9D28; margin: 0; }
+.ss-selected-info-text { font-size: 12px; color: #5E6677; margin: 6px 0 0; }
+.ss-clear-text { background: transparent; border: none; color: #B91C1C; font-size: 11px; font-weight: 800; letter-spacing: 0.4px; margin-top: 10px; cursor: pointer; font-family: inherit; padding: 0; }
+
+.ss-multi-date-summary { margin-top: 16px; padding: 16px; border-radius: 18px; background: #fff; border: 1px solid #E6E8EF; box-shadow: 0 5px 12px rgba(11,18,32,0.05); }
+.ss-summary-title { font-size: 14px; font-weight: 800; margin: 0 0 10px; }
+.ss-summary-row { padding: 9px 0; border-bottom: 1px solid #ECEEF4; display: flex; justify-content: space-between; }
+.ss-summary-date { font-size: 12px; font-weight: 700; color: #5E6677; }
+.ss-summary-amount { font-size: 12px; font-weight: 900; }
+
+.ss-booking-bar { position: fixed; left: 12px; right: 12px; bottom: 10px; min-height: 74px; padding: 12px 18px; background: rgba(255,255,255,0.98); border: 1px solid #E6E8EF; border-radius: 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px; box-shadow: 0 10px 24px rgba(11,18,32,0.12); z-index: 20; }
+.ss-booking-bar-left { flex: 1; }
+.ss-booking-count { display: block; font-size: 11px; font-weight: 700; color: #8A92A3; letter-spacing: 0.3px; }
+.ss-original-price { display: block; font-size: 11px; font-weight: 600; color: #B7BDCA; text-decoration: line-through; margin-top: 2px; }
+.ss-grand-total { display: block; font-size: 20px; font-weight: 900; letter-spacing: -0.3px; margin-top: 1px; }
+.ss-continue-button { min-width: 145px; height: 50px; padding: 0 20px; border: none; border-radius: 16px; background: #C7F36B; color: #0B1220; font-size: 12px; font-weight: 900; letter-spacing: 1.2px; cursor: pointer; box-shadow: 0 6px 12px rgba(135,185,54,0.22); font-family: inherit; }
+.ss-continue-button:disabled { background: #D9DCE7; cursor: not-allowed; box-shadow: none; }
+
+.ss-modal-overlay { position: fixed; inset: 0; background: rgba(11,18,32,0.55); display: flex; align-items: flex-end; justify-content: center; z-index: 100; }
+.ss-full-day-modal { width: 100%; max-width: 640px; max-height: 90vh; background: #fff; padding: 12px 22px 28px; border-top-left-radius: 28px; border-top-right-radius: 28px; overflow-y: auto; }
+.ss-modal-handle { width: 44px; height: 5px; border-radius: 3px; background: #C9CDD9; margin: 0 auto 18px; }
+.ss-modal-header { display: flex; justify-content: space-between; align-items: center; }
+.ss-modal-title { font-size: 20px; font-weight: 900; margin: 0; }
+.ss-modal-small-text { font-size: 11px; font-weight: 700; color: #6F9D28; margin-top: 4px; }
+.ss-modal-close { background: transparent; border: none; font-size: 30px; color: #8A92A3; cursor: pointer; line-height: 1; }
+.ss-modal-body { padding-top: 8px; }
+.ss-modal-section-title { font-size: 15px; font-weight: 800; margin-top: 22px; margin-bottom: 6px; }
+.ss-modal-description { font-size: 12px; color: #8A92A3; line-height: 1.5; margin: 0 0 12px; }
+
+.ss-start-row { display: flex; gap: 8px; overflow-x: auto; padding-top: 6px; }
+.ss-start-chip { flex-shrink: 0; min-width: 92px; height: 46px; padding: 0 14px; border-radius: 14px; background: #fff; border: 1.5px solid #E6E8EF; font-size: 12px; font-weight: 800; cursor: pointer; font-family: inherit; }
+.ss-start-chip.active { background: #C7F36B; border-color: #C7F36B; box-shadow: 0 4px 8px rgba(135,185,54,0.20); }
+
+.ss-range-box { display: flex; margin-top: 16px; background: #FAFDF4; border: 1px solid #D9EDA4; border-radius: 16px; overflow: hidden; }
+.ss-range-item { flex: 1; padding: 14px; text-align: center; }
+.ss-range-divider { width: 1px; background: #D9EDA4; }
+.ss-range-label { display: block; font-size: 11px; font-weight: 700; color: #8A92A3; letter-spacing: 0.4px; text-transform: uppercase; }
+.ss-range-value { display: block; font-size: 15px; font-weight: 900; color: #6F9D28; margin-top: 4px; }
+
+.ss-dropdown { width: 100%; height: 52px; padding: 0 16px; margin-top: 14px; border-radius: 14px; background: #fff; border: 1.5px solid #E6E8EF; display: flex; justify-content: space-between; align-items: center; font-size: 15px; font-weight: 800; cursor: pointer; font-family: inherit; }
+.ss-dropdown.disabled { opacity: 0.5; cursor: not-allowed; }
+.ss-dropdown-list { margin-top: 6px; border-radius: 14px; border: 1px solid #E6E8EF; overflow: hidden; }
+.ss-dropdown-item { width: 100%; min-height: 50px; padding: 0 16px; display: flex; justify-content: space-between; align-items: center; background: #fff; border: none; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; }
+.ss-dropdown-item.active { background: #FAFDF4; font-weight: 900; color: #6F9D28; }
+
+.ss-discount-box { margin-top: 18px; padding: 14px; border-radius: 16px; background: #FFFBEB; border: 1px solid #FDE68A; text-align: center; }
+.ss-discount-title { font-size: 13px; font-weight: 900; color: #92400E; margin: 0; }
+.ss-discount-text { font-size: 10px; font-weight: 500; color: #92400E; margin-top: 4px; line-height: 1.5; }
+
+.ss-apply-button { width: 100%; height: 54px; margin-top: 20px; border-radius: 16px; border: none; background: #C7F36B; color: #0B1220; font-size: 13px; font-weight: 900; letter-spacing: 1px; cursor: pointer; font-family: inherit; box-shadow: 0 6px 12px rgba(135,185,54,0.22); }
+.ss-apply-button:disabled { background: #D9DCE7; cursor: not-allowed; box-shadow: none; }
+
+.ss-spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(11,18,32,0.20); border-top-color: #0B1220; border-radius: 50%; animation: ss-spin 0.7s linear infinite; }
+.ss-spinner.large { width: 32px; height: 32px; border-color: #E6E8EF; border-top-color: #87B936; }
+@keyframes ss-spin { to { transform: rotate(360deg); } }

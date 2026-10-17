@@ -1,0 +1,117 @@
+/* OwnerDashboardScreen.css */
+.od-safe { min-height: 100vh; background: #FFFFFF; font-family: 'Poppins', system-ui, sans-serif; color: #0F1A0B; }
+.od-container { max-width: 720px; margin: 0 auto; padding: 12px 18px 110px; }
+
+.od-loading-container { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.od-loading-logo { width: 52px; height: 52px; border-radius: 17px; background: #0B1220; color: #C7F36B; font-size: 25px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; box-shadow: 0 6px 12px rgba(11,18,32,0.16); }
+.od-loading-text { margin-top: 9px; color: #4A5A42; font-size: 11px; font-weight: 600; }
+.od-spinner { display: inline-block; width: 24px; height: 24px; border: 2px solid #E8F3E0; border-top-color: #C7F36B; border-radius: 50%; animation: od-spin 0.7s linear infinite; }
+@keyframes od-spin { to { transform: rotate(360deg); } }
+
+.od-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
+.od-header-text { flex: 1; margin-right: 12px; }
+.od-header-badge { display: inline-block; padding: 5px 12px; border-radius: 20px; background: #F2F9EC; border: 1.5px solid #D9EDCB; color: #6AAF4A; font-size: 10px; font-weight: 800; letter-spacing: 1.5px; margin-bottom: 10px; }
+.od-greeting { font-size: 26px; font-weight: 800; margin: 0; letter-spacing: 0.2px; }
+.od-turf-count { font-size: 13px; color: #8B9A82; margin: 6px 0 0; font-weight: 500; }
+.od-header-icon { width: 52px; height: 52px; border-radius: 26px; background: #F2F9EC; border: 1.5px solid #D9EDCB; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+
+.od-refresh-btn { background: #F2F9EC; border: 1px solid #D9EDCB; color: #6AAF4A; font-size: 11px; font-weight: 800; padding: 7px 14px; border-radius: 20px; cursor: pointer; margin-bottom: 14px; font-family: inherit; }
+.od-refresh-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.od-error-card { background: #FEF2F2; border: 1px solid #FECACA; border-radius: 20px; padding: 20px; margin-bottom: 20px; text-align: center; }
+.od-error-icon-circle { width: 52px; height: 52px; border-radius: 26px; background: #fff; border: 1px solid #FECACA; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; font-size: 24px; color: #B91C1C; font-weight: 800; }
+.od-error-title { font-size: 16px; font-weight: 800; color: #B91C1C; margin: 0; }
+.od-error-text { font-size: 12px; color: #B91C1C; margin: 8px 0 0; line-height: 1.5; }
+.od-retry-btn { margin-top: 16px; padding: 12px 24px; background: #C7F36B; border: none; border-radius: 24px; color: #fff; font-size: 11px; font-weight: 800; letter-spacing: 1.2px; cursor: pointer; font-family: inherit; }
+
+.od-section-title-row { display: flex; align-items: center; margin-bottom: 14px; margin-top: 8px; }
+.od-section-title { font-size: 19px; font-weight: 800; margin: 0; letter-spacing: 0.2px; }
+.od-section-accent { width: 6px; height: 6px; border-radius: 3px; background: #F97316; margin-left: 8px; }
+.od-section-header { display: flex; justify-content: space-between; align-items: center; margin: 14px 0; }
+.od-view-text { background: #F2F9EC; border: 1.5px solid #D9EDCB; color: #6AAF4A; font-size: 10px; font-weight: 800; letter-spacing: 1.2px; padding: 7px 12px; border-radius: 16px; cursor: pointer; font-family: inherit; }
+.od-live-badge { display: flex; align-items: center; gap: 6px; background: #F2F9EC; border: 1.5px solid #D9EDCB; padding: 6px 12px; border-radius: 14px; color: #6AAF4A; font-size: 9px; font-weight: 800; letter-spacing: 1px; }
+.od-live-dot { width: 6px; height: 6px; border-radius: 3px; background: #C7F36B; }
+
+.od-turf-card { background: #fff; border: 1px solid #E8F3E0; border-radius: 22px; padding: 18px; margin-bottom: 22px; box-shadow: 0 5px 12px rgba(0,0,0,0.05); }
+.od-turf-card-title { font-size: 18px; font-weight: 800; margin: 0; }
+.od-turf-row { display: flex; align-items: center; padding: 14px 0; border-bottom: 1px solid #D9EDCB; }
+.od-turf-row.last { border-bottom: none; padding-bottom: 0; }
+.od-turf-icon { width: 44px; height: 44px; border-radius: 22px; background: #F2F9EC; border: 1px solid #D9EDCB; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.od-turf-info { flex: 1; margin-left: 14px; margin-right: 8px; min-width: 0; }
+.od-turf-name { font-size: 15px; font-weight: 800; margin: 0; }
+.od-turf-address { font-size: 11px; color: #8B9A82; margin: 4px 0 0; font-weight: 500; }
+.od-status-badge { padding: 6px 12px; border-radius: 14px; border: 1px solid; font-size: 9px; font-weight: 800; letter-spacing: 1px; }
+.od-status-badge.small { padding: 5px 10px; border-radius: 12px; font-size: 8px; margin-top: 6px; }
+
+.od-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+.od-stat-card { background: #fff; border: 1px solid #E8F3E0; border-radius: 20px; padding: 16px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+.od-stat-icon { width: 44px; height: 44px; border-radius: 14px; background: #F2F9EC; border: 1px solid #D9EDCB; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; font-size: 20px; font-weight: 800; color: #6AAF4A; }
+.od-stat-value { font-size: 24px; font-weight: 800; margin: 0; }
+.od-stat-label { font-size: 11px; color: #4A5A42; margin: 5px 0 0; font-weight: 600; }
+
+.od-revenue-card { background: #0B1220; border: 1px solid #273247; border-radius: 24px; padding: 20px; margin-bottom: 22px; box-shadow: 0 8px 16px rgba(11,18,32,0.16); }
+.od-revenue-label { font-size: 10px; color: #AAB4C5; font-weight: 800; letter-spacing: 1.2px; margin: 0; }
+.od-revenue-amount { font-size: 32px; font-weight: 800; color: #C7F36B; margin: 8px 0 0; letter-spacing: 0.3px; }
+.od-chart { height: 150px; margin-top: 22px; display: flex; align-items: flex-end; justify-content: space-around; border-bottom: 1px solid #273247; }
+.od-chart-column { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; min-width: 30px; }
+.od-bar { width: 20px; border-radius: 8px; background: #C7F36B; margin-bottom: 8px; }
+.od-day-text { font-size: 9px; color: #AAB4C5; margin-bottom: 6px; font-weight: 600; }
+.od-empty-chart { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.od-empty-chart-icon { font-size: 30px; color: #C7F36B; margin-bottom: 10px; }
+.od-empty-text { font-size: 12px; color: #8B9A82; text-align: center; margin: 0; font-weight: 500; }
+.od-period-row { display: flex; gap: 10px; margin-top: 18px; }
+.od-active-period { background: #C7F36B; color: #0B1220; border: none; padding: 9px 16px; border-radius: 22px; font-size: 11px; font-weight: 800; letter-spacing: 0.5px; cursor: pointer; font-family: inherit; }
+.od-period-button { background: #151F30; color: #D5DCE7; border: 1px solid #344057; padding: 9px 16px; border-radius: 22px; font-size: 11px; font-weight: 800; letter-spacing: 0.5px; cursor: pointer; font-family: inherit; }
+
+.od-slot-summary-card { background: #fff; border: 1px solid #E8F3E0; border-radius: 22px; padding: 18px; margin-bottom: 22px; box-shadow: 0 5px 12px rgba(0,0,0,0.05); }
+.od-slot-item { display: flex; align-items: center; padding: 10px 0; }
+.od-slot-dot { width: 10px; height: 10px; border-radius: 5px; margin-right: 12px; }
+.od-slot-label { flex: 1; font-size: 13px; color: #4A5A42; font-weight: 600; }
+.od-slot-value { font-size: 17px; font-weight: 800; }
+
+.od-court-card { background: #fff; border: 1px solid #E8F3E0; border-radius: 22px; padding: 18px; margin-bottom: 14px; box-shadow: 0 5px 12px rgba(0,0,0,0.05); }
+.od-court-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.od-court-name-box { flex: 1; margin-right: 12px; }
+.od-court-name { font-size: 16px; font-weight: 800; margin: 0; }
+.od-sport-pill { display: inline-block; margin-top: 7px; padding: 4px 10px; border-radius: 12px; background: #fff; border: 1px solid #D9EDCB; color: #6AAF4A; font-size: 9px; font-weight: 800; letter-spacing: 0.8px; }
+.od-court-bookings { font-size: 11px; color: #8B9A82; margin-top: 7px; font-weight: 600; margin-bottom: 0; }
+.od-court-percentage { font-size: 22px; font-weight: 800; color: #6AAF4A; }
+.od-progress-background { height: 10px; background: #F9FCF6; border: 1px solid #D9EDCB; border-radius: 6px; margin-top: 16px; overflow: hidden; }
+.od-progress-fill { height: 100%; background: #C7F36B; border-radius: 6px; }
+.od-court-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; }
+.od-court-revenue { font-size: 12px; color: #4A5A42; font-weight: 700; }
+
+.od-booking-summary { background: #fff; border: 1px solid #E8F3E0; border-radius: 20px; padding: 16px; display: flex; justify-content: space-between; margin-bottom: 22px; box-shadow: 0 5px 12px rgba(0,0,0,0.05); }
+.od-booking-summary-item { display: flex; flex-direction: column; align-items: center; flex: 1; }
+.od-booking-dot { width: 8px; height: 8px; border-radius: 4px; margin-bottom: 7px; }
+.od-booking-number { font-size: 22px; font-weight: 800; letter-spacing: 0.2px; }
+.od-booking-label { font-size: 9px; color: #8B9A82; margin-top: 5px; font-weight: 800; letter-spacing: 0.5px; }
+
+.od-booking-card { background: #fff; border: 1px solid #E8F3E0; border-radius: 18px; padding: 16px; display: flex; align-items: center; margin-bottom: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+.od-avatar { width: 46px; height: 46px; border-radius: 23px; background: #F2F9EC; border: 1px solid #D9EDCB; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.od-avatar-text { font-size: 14px; font-weight: 800; color: #6AAF4A; letter-spacing: 0.5px; }
+.od-booking-info { flex: 1; margin-left: 14px; margin-right: 8px; min-width: 0; }
+.od-customer-name { font-size: 14px; font-weight: 800; margin: 0; }
+.od-booking-details { font-size: 11px; color: #4A5A42; margin: 4px 0 0; font-weight: 500; }
+.od-booking-date { font-size: 10px; color: #8B9A82; margin: 4px 0 0; font-weight: 600; }
+.od-booking-right { display: flex; flex-direction: column; align-items: flex-end; max-width: 100px; }
+.od-booking-amount { font-size: 15px; font-weight: 800; margin: 0; }
+
+.od-payment-card { background: #fff; border: 1px solid #E8F3E0; border-radius: 22px; padding: 20px; margin-bottom: 22px; box-shadow: 0 5px 12px rgba(0,0,0,0.05); }
+.od-payment-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; }
+.od-payment-label { font-size: 13px; color: #4A5A42; font-weight: 600; }
+.od-payment-value { font-size: 14px; font-weight: 800; }
+.od-fee-text { color: #B91C1C; }
+.od-divider { height: 1px; background: #D9EDCB; margin: 12px 0; }
+.od-owner-amount-label { font-size: 14px; font-weight: 800; letter-spacing: 0.2px; }
+.od-owner-amount { font-size: 22px; font-weight: 800; color: #6AAF4A; }
+
+.od-empty-card { background: #F2F9EC; border: 1px solid #D9EDCB; border-radius: 22px; padding: 30px; text-align: center; margin-bottom: 22px; }
+.od-empty-icon-circle { width: 72px; height: 72px; border-radius: 36px; background: #fff; border: 1px solid #D9EDCB; display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; font-size: 30px; }
+.od-empty-title { font-size: 16px; font-weight: 800; margin: 0; letter-spacing: 0.2px; }
+.od-primary-button { background: #C7F36B; color: #fff; border: none; padding: 13px 24px; border-radius: 14px; font-size: 11px; font-weight: 800; letter-spacing: 1.2px; margin-top: 18px; cursor: pointer; font-family: inherit; }
+
+.od-quick-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.od-action-button { background: #fff; border: 1px solid #E8F3E0; border-radius: 20px; padding: 20px; display: flex; flex-direction: column; align-items: center; cursor: pointer; font-family: inherit; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+.od-action-icon-circle { width: 52px; height: 52px; border-radius: 26px; background: #F2F9EC; border: 1.5px solid #D9EDCB; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; font-size: 24px; color: #6AAF4A; }
+.od-action-text { font-size: 12px; font-weight: 800; color: #0F1A0B; letter-spacing: 0.3px; }

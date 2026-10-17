@@ -1,0 +1,102 @@
+/* PaymentScreen.css */
+.pm-safe { min-height: 100vh; background: #F7F8FC; font-family: 'Poppins', system-ui, sans-serif; color: #0B1220; display: flex; flex-direction: column; }
+.pm-center { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px; min-height: 100vh; }
+.pm-loading-text { margin-top: 12px; color: #8A92A3; font-size: 14px; font-weight: 600; }
+
+.pm-header { height: 60px; background: #fff; border-bottom: 1px solid #E6E8EF; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; }
+.pm-back-button { width: 42px; height: 42px; border-radius: 14px; border: 1px solid #E6E8EF; background: #fff; font-size: 22px; font-weight: 900; cursor: pointer; font-family: inherit; }
+.pm-back-button:disabled { opacity: 0.4; cursor: not-allowed; }
+.pm-header-title { font-size: 17px; font-weight: 900; margin: 0; }
+.pm-header-right { width: 42px; }
+
+.pm-content { flex: 1; max-width: 640px; width: 100%; margin: 0 auto; padding: 16px 16px 165px; }
+
+.pm-secure-banner, .pm-success-banner { display: flex; align-items: center; gap: 12px; border-radius: 16px; padding: 14px; margin-bottom: 16px; border: 1px solid #ECEEF4; background: #F4FBE6; }
+.pm-secure-icon, .pm-success-icon { width: 42px; height: 42px; border-radius: 14px; background: #fff; border: 1px solid #ECEEF4; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.pm-success-icon { background: #C7F36B; border-color: #C7F36B; color: #0B1220; font-weight: 900; }
+.pm-secure-text, .pm-success-text { flex: 1; }
+.pm-secure-title, .pm-success-title { font-size: 14px; font-weight: 800; margin: 0; color: #6F9D28; }
+.pm-secure-subtitle, .pm-success-subtitle { font-size: 11px; color: #5E6677; margin: 3px 0 0; line-height: 1.5; }
+.pm-success-booking-id { font-size: 11px; font-weight: 800; color: #6F9D28; margin: 5px 0 0; }
+
+.pm-status-card { display: flex; align-items: center; gap: 11px; border: 1px solid #FDE68A; background: #FFFBEB; border-radius: 14px; padding: 13px; margin-bottom: 20px; }
+.pm-status-card.green { background: #FAFDF4; border-color: #D9EDA4; }
+.pm-status-card.success { background: #F4FBE6; border-color: #D9EDA4; }
+.pm-status-card.failed { background: #FEF2F2; border-color: #FECACA; }
+.pm-status-icon { width: 38px; height: 38px; border-radius: 12px; background: #fff; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 900; color: #87B936; flex-shrink: 0; }
+.pm-status-content { flex: 1; }
+.pm-status-title { font-size: 13px; font-weight: 800; margin: 0; color: #92400E; }
+.pm-status-title.success { color: #6F9D28; }
+.pm-status-title.failed { color: #B91C1C; }
+.pm-status-message { font-size: 11px; color: #5E6677; margin: 3px 0 0; line-height: 1.5; }
+.pm-status-message.success { color: #6F9D28; }
+.pm-status-message.failed { color: #B91C1C; }
+.pm-booking-id-text { font-size: 11px; font-weight: 800; color: #6F9D28; margin: 5px 0 0; }
+
+.pm-section-title { font-size: 16px; font-weight: 800; margin: 0 0 10px; }
+
+.pm-turf-card { display: flex; gap: 12px; background: #fff; border: 1px solid #E6E8EF; border-radius: 16px; padding: 12px; margin-bottom: 18px; box-shadow: 0 4px 10px rgba(11,18,32,0.04); }
+.pm-turf-image, .pm-image-placeholder { width: 88px; height: 88px; border-radius: 12px; flex-shrink: 0; }
+.pm-turf-image { object-fit: cover; background: #F1F3F8; }
+.pm-image-placeholder { background: #FAFDF4; display: flex; align-items: center; justify-content: center; font-size: 30px; }
+.pm-turf-info { flex: 1; display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+.pm-turf-name { font-size: 16px; font-weight: 800; margin: 0; }
+.pm-court-text { font-size: 12px; color: #6F9D28; font-weight: 700; margin: 5px 0 0; }
+.pm-location-text { font-size: 11px; color: #8A92A3; margin: 4px 0 0; }
+
+.pm-detail-card { background: #fff; border: 1px solid #E6E8EF; border-radius: 16px; padding: 0 16px; margin-bottom: 20px; }
+.pm-detail-row { min-height: 54px; display: flex; align-items: center; justify-content: space-between; }
+.pm-detail-label { font-size: 13px; color: #5E6677; font-weight: 500; }
+.pm-detail-value { font-size: 13px; font-weight: 800; }
+.pm-success-value { font-size: 13px; font-weight: 900; color: #6F9D28; }
+.pm-divider { height: 1px; background: #ECEEF4; }
+
+.pm-multi-date-card { background: #fff; border: 1px solid #E6E8EF; border-radius: 16px; overflow: hidden; margin-bottom: 14px; }
+.pm-empty-slots { min-height: 70px; display: flex; align-items: center; justify-content: center; color: #8A92A3; font-size: 12px; }
+.pm-date-group { padding: 14px; border-bottom: 1px solid #ECEEF4; }
+.pm-date-group.last { border-bottom: none; }
+.pm-date-group-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.pm-date-badge { width: 34px; height: 34px; border-radius: 11px; background: #FAFDF4; border: 1px solid #D9EDA4; display: flex; align-items: center; justify-content: center; color: #6F9D28; font-size: 13px; font-weight: 800; flex-shrink: 0; }
+.pm-date-group-title-box { flex: 1; }
+.pm-date-group-title { font-size: 14px; font-weight: 800; margin: 0; }
+.pm-date-group-subtitle { font-size: 11px; color: #8A92A3; margin: 2px 0 0; }
+.pm-date-group-total { font-size: 14px; font-weight: 900; color: #6F9D28; margin: 0; }
+
+.pm-multi-date-slot-row { display: flex; align-items: center; justify-content: space-between; padding: 7px 8px; background: #FAFDF4; border-radius: 10px; margin-top: 6px; }
+.pm-multi-date-slot-left { display: flex; align-items: center; flex: 1; min-width: 0; }
+.pm-slot-dot { width: 28px; height: 28px; border-radius: 9px; background: #fff; border: 1px solid #ECEEF4; display: flex; align-items: center; justify-content: center; color: #5E6677; font-size: 11px; font-weight: 800; margin-right: 9px; flex-shrink: 0; }
+.pm-slot-info { flex: 1; min-width: 0; }
+.pm-slot-time { font-size: 13px; font-weight: 700; margin: 0; }
+.pm-night-badge { display: inline-block; background: #F5F3FF; border: 1px solid #EDE9FE; padding: 3px 7px; border-radius: 6px; font-size: 10px; font-weight: 700; color: #6D28D9; margin-top: 4px; }
+.pm-slot-price { font-size: 13px; font-weight: 800; margin-left: 10px; flex-shrink: 0; }
+
+.pm-amount-card { background: #fff; border: 1px solid #E6E8EF; border-radius: 16px; padding: 16px; margin-bottom: 18px; }
+.pm-amount-row, .pm-total-row { display: flex; justify-content: space-between; align-items: center; }
+.pm-amount-label { font-size: 13px; color: #5E6677; }
+.pm-amount-value { font-size: 13px; font-weight: 700; }
+.pm-amount-divider { height: 1px; background: #ECEEF4; margin: 14px 0; }
+.pm-total-label { font-size: 15px; font-weight: 800; }
+.pm-total-value { font-size: 20px; font-weight: 900; color: #6F9D28; letter-spacing: -0.3px; }
+
+.pm-info-box { background: #FAFDF4; border: 1px solid #D9EDA4; border-radius: 14px; padding: 14px; margin-bottom: 12px; }
+.pm-info-title { font-size: 13px; font-weight: 800; color: #6F9D28; margin: 0 0 8px; }
+.pm-info-text { font-size: 11px; color: #5E6677; line-height: 1.55; margin: 0 0 3px; }
+
+.pm-warning-box { background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 14px; padding: 14px; margin-bottom: 12px; }
+.pm-warning-title { font-size: 13px; font-weight: 800; color: #92400E; margin: 0 0 6px; }
+.pm-warning-text { font-size: 11px; color: #92400E; line-height: 1.55; margin: 0; }
+
+.pm-success-details-card { background: #fff; border: 1px solid #D9EDA4; border-radius: 16px; padding: 0 16px; margin-bottom: 12px; }
+.pm-success-details-title { font-size: 14px; font-weight: 900; color: #6F9D28; padding: 15px 0 5px; margin: 0; }
+
+.pm-bottom-bar { position: fixed; left: 12px; right: 12px; bottom: 10px; min-height: 74px; padding: 12px 18px; background: rgba(255,255,255,0.98); border: 1px solid #E6E8EF; border-radius: 24px; display: flex; align-items: center; justify-content: space-between; gap: 12px; box-shadow: 0 10px 24px rgba(11,18,32,0.12); z-index: 20; }
+.pm-bottom-price-box { flex: 1; min-width: 100px; }
+.pm-bottom-label { font-size: 11px; font-weight: 700; color: #8A92A3; letter-spacing: 0.3px; display: block; }
+.pm-bottom-amount { font-size: 20px; font-weight: 900; color: #0B1220; letter-spacing: -0.3px; display: block; margin-top: 1px; }
+.pm-pay-button { min-width: 148px; height: 50px; padding: 0 20px; border: none; border-radius: 16px; background: #C7F36B; color: #0B1220; font-size: 12px; font-weight: 900; letter-spacing: 1.2px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 6px 12px rgba(135,185,54,0.22); font-family: inherit; }
+.pm-pay-button.disabled { opacity: 0.6; cursor: not-allowed; }
+.pm-pay-button.success { background: #87B936; }
+
+.pm-spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(11,18,32,0.20); border-top-color: #0B1220; border-radius: 50%; animation: pm-spin 0.7s linear infinite; }
+.pm-spinner.large { width: 32px; height: 32px; border-color: #E6E8EF; border-top-color: #87B936; }
+@keyframes pm-spin { to { transform: rotate(360deg); } }

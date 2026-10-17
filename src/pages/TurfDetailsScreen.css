@@ -1,0 +1,106 @@
+/* TurfDetailsScreen.css */
+.td-safe { min-height: 100vh; background: #F7F8FC; font-family: 'Poppins', system-ui, sans-serif; color: #0B1220; }
+.td-container { max-width: 720px; margin: 0 auto; position: relative; }
+
+.td-hero { position: relative; width: 100%; overflow: hidden; background: #E6E8EF; }
+.td-hero-image { width: 100%; height: 100%; object-fit: cover; display: block; }
+.td-hero-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(11,18,32,0.5); color: #fff; font-size: 22px; cursor: pointer; font-family: inherit; }
+.td-hero-nav.prev { left: 12px; }
+.td-hero-nav.next { right: 12px; }
+.td-dots-row { position: absolute; bottom: 26px; left: 0; right: 0; display: flex; justify-content: center; gap: 5px; }
+.td-dot { width: 5px; height: 5px; border-radius: 2.5px; border: none; background: rgba(255,255,255,0.55); cursor: pointer; padding: 0; transition: width 0.2s; }
+.td-dot.active { width: 16px; background: #C7F36B; }
+
+.td-hero-placeholder { height: 260px; background: #FAFDF4; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.td-hero-placeholder-icon { font-size: 40px; margin-bottom: 8px; }
+.td-hero-placeholder-text { font-size: 13px; color: #8A92A3; font-weight: 600; }
+
+.td-floating-header { position: absolute; top: 12px; left: 0; right: 0; padding: 0 14px; display: flex; justify-content: space-between; align-items: center; z-index: 10; }
+.td-floating-button { width: 40px; height: 40px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.20); background: rgba(11,18,32,0.55); color: #fff; font-size: 20px; font-weight: 700; cursor: pointer; font-family: inherit; box-shadow: 0 4px 10px rgba(11,18,32,0.25); }
+
+.td-content-card { margin-top: -22px; padding: 18px 14px 100px; background: #F7F8FC; border-top-left-radius: 24px; border-top-right-radius: 24px; position: relative; }
+
+.td-info-card { background: #fff; border: 1px solid #E6E8EF; border-radius: 18px; padding: 14px; margin-bottom: 10px; box-shadow: 0 4px 12px rgba(11,18,32,0.05); }
+.td-title-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.td-title-container { flex: 1; min-width: 0; }
+.td-turf-name { font-size: 20px; font-weight: 900; margin: 0; line-height: 1.3; letter-spacing: -0.3px; }
+.td-city-row { display: flex; align-items: center; gap: 4px; margin-top: 6px; font-size: 12px; }
+.td-city-text { color: #5E6677; font-weight: 600; }
+.td-price-box { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8px 12px; border-radius: 14px; background: #F4FBE6; border: 1.5px solid #D9EDA4; min-width: 82px; }
+.td-price-label { font-size: 9px; font-weight: 800; color: #6F9D28; letter-spacing: 0.6px; text-transform: uppercase; }
+.td-price { font-size: 18px; font-weight: 900; margin-top: 1px; letter-spacing: -0.4px; }
+.td-price-unit { font-size: 9px; font-weight: 700; color: #5E6677; margin-top: 1px; }
+
+.td-address-row { display: flex; align-items: center; width: 100%; margin-top: 12px; padding: 12px 0 4px; border-top: 1px solid #ECEEF4; background: transparent; border-left: none; border-right: none; border-bottom: none; cursor: pointer; text-align: left; font-family: inherit; }
+.td-address-icon-wrapper { width: 34px; height: 34px; border-radius: 11px; background: #F4FBE6; border: 1px solid #D9EDA4; display: flex; align-items: center; justify-content: center; margin-right: 9px; flex-shrink: 0; }
+.td-address-content { flex: 1; min-width: 0; }
+.td-address-text { font-size: 12px; line-height: 1.5; color: #5E6677; font-weight: 600; margin: 0; }
+.td-address-city { font-size: 10px; color: #8A92A3; margin: 2px 0 0; font-weight: 500; }
+.td-map-button { width: 34px; height: 34px; border-radius: 11px; background: #FAFDF4; border: 1px solid #D9EDA4; display: flex; align-items: center; justify-content: center; color: #6F9D28; margin-left: 8px; flex-shrink: 0; font-size: 16px; }
+
+.td-status-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 18px; border: 1px solid; margin-top: 12px; }
+.td-status-badge.open { background: #FAFDF4; border-color: #D9EDA4; }
+.td-status-badge.closed { background: #FEF2F2; border-color: #FECACA; }
+.td-status-dot { width: 7px; height: 7px; border-radius: 3.5px; }
+.td-status-dot.open { background: #87B936; }
+.td-status-dot.closed { background: #EF4444; }
+.td-status-text { font-size: 11px; font-weight: 800; letter-spacing: 0.2px; }
+.td-status-text.open { color: #6F9D28; }
+.td-status-text.closed { color: #B91C1C; }
+
+.td-section-card { background: #fff; border: 1px solid #E6E8EF; border-radius: 18px; padding: 14px; margin-bottom: 10px; box-shadow: 0 4px 12px rgba(11,18,32,0.05); }
+.td-section-title-row { display: flex; align-items: center; margin-bottom: 10px; }
+.td-section-title { font-size: 15px; font-weight: 800; margin: 0; }
+.td-section-title-accent { width: 5px; height: 5px; border-radius: 2.5px; background: #C7F36B; margin-left: 7px; }
+.td-section-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.td-section-count { font-size: 11px; font-weight: 700; color: #8A92A3; }
+.td-link-text { background: transparent; border: none; color: #6F9D28; font-size: 11px; font-weight: 800; letter-spacing: 0.4px; cursor: pointer; font-family: inherit; }
+
+.td-description { font-size: 13px; line-height: 1.55; color: #5E6677; margin: 0; }
+
+.td-chip-container { display: flex; flex-wrap: wrap; gap: 6px; }
+.td-chip { background: #F4FBE6; border: 1.5px solid #D9EDA4; border-radius: 18px; padding: 7px 12px; font-size: 11px; font-weight: 800; color: #6F9D28; text-transform: capitalize; letter-spacing: 0.4px; }
+
+.td-amenities-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.td-amenity-item { display: flex; align-items: center; gap: 7px; }
+.td-amenity-icon { width: 28px; height: 28px; border-radius: 9px; background: #FAFDF4; border: 1px solid #D9EDA4; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+.td-amenity-text { font-size: 11px; color: #5E6677; font-weight: 600; line-height: 1.4; overflow: hidden; text-overflow: ellipsis; }
+
+.td-court-card { display: flex; align-items: center; justify-content: space-between; padding: 11px 14px; margin-bottom: 8px; border-radius: 14px; background: #FAFDF4; border: 1px solid #ECEEF4; }
+.td-court-card:last-child { margin-bottom: 0; }
+.td-court-left { flex: 1; min-width: 0; padding-right: 10px; }
+.td-court-name { font-size: 14px; font-weight: 800; margin: 0; }
+.td-court-meta-row { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.td-court-sports-inline { font-size: 10px; color: #8A92A3; font-weight: 600; letter-spacing: 0.2px; text-transform: uppercase; }
+.td-night-badge { padding: 2px 7px; border-radius: 7px; background: #FFFBEB; border: 1px solid #FDE68A; font-size: 9px; color: #92400E; font-weight: 800; letter-spacing: 0.3px; }
+.td-court-right { text-align: right; }
+.td-court-price { font-size: 16px; font-weight: 900; color: #6F9D28; letter-spacing: -0.2px; }
+.td-court-unit { font-size: 9px; font-weight: 700; color: #8A92A3; }
+
+.td-no-courts { padding: 20px; border-radius: 14px; background: #FAFDF4; border: 1.5px dashed #ECEEF4; text-align: center; }
+.td-no-courts-icon { font-size: 24px; display: block; margin-bottom: 5px; }
+.td-no-courts-text { font-size: 12px; color: #8A92A3; font-weight: 600; margin: 0; }
+
+.td-hours-card { padding: 12px; border-radius: 12px; background: #FAFDF4; border: 1px solid #ECEEF4; }
+.td-hours-row { display: flex; justify-content: space-between; align-items: center; }
+.td-hours-row.divided { margin-top: 8px; padding-top: 8px; border-top: 1px solid #ECEEF4; }
+.td-hours-day { font-size: 13px; font-weight: 800; }
+.td-hours-time { font-size: 12px; font-weight: 900; color: #6F9D28; }
+.td-hours-time.closed { color: #B91C1C; }
+.td-hours-day-small { font-size: 12px; font-weight: 600; color: #8A92A3; }
+.td-hours-time-small { font-size: 12px; font-weight: 700; color: #5E6677; }
+.td-hours-time-small.closed { color: #B91C1C; }
+
+.td-floating-bottom-bar { position: fixed; left: 12px; right: 12px; bottom: 10px; min-height: 70px; padding: 10px 16px; background: rgba(255,255,255,0.98); border: 1px solid #E6E8EF; border-radius: 22px; display: flex; align-items: center; justify-content: space-between; gap: 12px; box-shadow: 0 10px 24px rgba(11,18,32,0.12); z-index: 20; }
+.td-bottom-info { flex: 1; }
+.td-bottom-label { font-size: 10px; font-weight: 700; color: #8A92A3; letter-spacing: 0.3px; display: block; }
+.td-bottom-value { font-size: 18px; font-weight: 900; margin-top: 1px; letter-spacing: -0.3px; display: block; }
+.td-bottom-unit { font-size: 11px; font-weight: 700; color: #8A92A3; }
+.td-book-button { min-width: 138px; height: 46px; padding: 0 18px; border-radius: 14px; border: none; background: #C7F36B; color: #0B1220; font-size: 11px; font-weight: 900; letter-spacing: 1.2px; cursor: pointer; box-shadow: 0 5px 10px rgba(135,185,54,0.22); font-family: inherit; }
+.td-book-button:disabled { background: #D9DCE7; cursor: not-allowed; box-shadow: none; }
+
+.td-empty-container { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px; text-align: center; }
+.td-empty-icon { font-size: 48px; margin-bottom: 12px; }
+.td-empty-title { font-size: 20px; font-weight: 900; margin: 0 0 6px; }
+.td-empty-subtitle { font-size: 13px; color: #8A92A3; margin-bottom: 20px; line-height: 1.5; }
+.td-back-button { padding: 13px 26px; border-radius: 15px; background: #C7F36B; border: none; font-weight: 900; font-size: 12px; letter-spacing: 0.8px; cursor: pointer; font-family: inherit; }
