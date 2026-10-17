@@ -10,17 +10,24 @@
 /* 2. Set up the body to take up the full screen */
 html, body {
   width: 100%;
-  min-height: 100vh;
+  height: 100%; /* Changed from min-height to height to force full view */
   background-color: #F7F8FC;
   font-family: 'Poppins', system-ui, -apple-system, sans-serif;
   color: #0B1220;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-x: hidden;
 }
 
-/* 3. The root React container must be 100% width */
+/* 3. The root React container must be 100% width and height */
 #root {
   width: 100%;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ✅ Add this: Force the Auth screen to fill the height */
+#root > div {
+  flex: 1;
   display: flex;
   flex-direction: column;
 }
