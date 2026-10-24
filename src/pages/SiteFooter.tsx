@@ -91,7 +91,7 @@ const SiteFooter: React.FC<SiteFooterProps> = ({ onNavigate }) => {
             Terms &amp; Conditions
           </button>
 
-          <a href="mailto:mavinmarvishal601@gmail.com">
+          <a href="mailto:infranovatechofficial@gmail.com">
             Contact Us
           </a>
         </div>

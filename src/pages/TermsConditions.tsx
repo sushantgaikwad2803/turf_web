@@ -457,7 +457,7 @@ const TermsConditions: React.FC = () => {
                 href="mailto:mavinmarvishal601@gmail.com"
                 style={{ color: '#2563eb', textDecoration: 'none' }}
               >
-                mavinmarvishal601@gmail.com
+                infranovatechofficial@gmail.com
               </a>
             </p>
           </section>

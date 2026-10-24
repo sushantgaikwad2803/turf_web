@@ -1,6 +1,6 @@
 // import React from 'react';
 
-const SUPPORT_EMAIL = 'mavinmarvishal601@gmail.com';
+const SUPPORT_EMAIL = 'infranovatechofficial@gmail.com';
 
 const refundSections = [
   {
