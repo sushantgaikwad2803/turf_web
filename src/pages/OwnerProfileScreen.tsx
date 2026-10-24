@@ -9,8 +9,7 @@ import './OwnerProfileScreen.css';
 const RAW_API_BASE_URL = (
   (import.meta as any).env?.VITE_API_URL ||
   'https://turf-backend-q8w4.onrender.com/api'
-)
-  .trim();
+).trim();
 
 const normalizeApiBaseUrl = (value: string): string => {
   let url = value.trim().replace(/^['"]|['"]$/g, '');
@@ -128,9 +127,19 @@ const getErrorMessage = (error: unknown, fallback = 'Something went wrong.'): st
   return fallback;
 };
 
-const parseApiResponse = async (response: Response): Promise<any> => {
+/**
+ * Robust response parser.
+ * - Handles empty bodies gracefully (returns null).
+ * - Handles non-JSON (HTML error pages) by exposing the raw text in the error.
+ * - Treats 404 as "not found" only when the caller opts in.
+ */
+const parseApiResponse = async (
+  response: Response,
+  options: { allow404?: boolean } = {},
+): Promise<any> => {
   const text = await response.text();
   let data: any = null;
+
   if (text) {
     try {
       data = JSON.parse(text);
@@ -138,6 +147,11 @@ const parseApiResponse = async (response: Response): Promise<any> => {
       data = { message: text };
     }
   }
+
+  if (options.allow404 && response.status === 404) {
+    return data ?? null;
+  }
+
   if (!response.ok) {
     throw new Error(
       data?.message ||
@@ -145,6 +159,7 @@ const parseApiResponse = async (response: Response): Promise<any> => {
         `Request failed with status ${response.status}`,
     );
   }
+
   return data;
 };
 
@@ -164,8 +179,6 @@ const timeStringToDate = (time: string): Date => {
   date.setHours(Number.isNaN(hours) ? 6 : hours, Number.isNaN(minutes) ? 0 : minutes, 0, 0);
   return date;
 };
-
-// ✅ REMOVED: `dateToTimeString` was unused after migrating to native <input type="time">.
 
 const formatHour = (hour?: number): string => {
   if (typeof hour !== 'number' || hour < 0 || hour > 23) return '--:--';
@@ -317,13 +330,20 @@ export const OwnerProfileScreen: React.FC<OwnerProfileScreenProps> = ({
   const [selectedTurf, setSelectedTurf] = useState<Turf | null>(null);
   const [selectedCourt, setSelectedCourt] = useState<Court | null>(null);
 
-  /* LOADING */
+  /* LOADING + DATA-ERROR STATE */
   const [loading, setLoading] = useState(false);
   const [fetchingData, setFetchingData] = useState(false);
+  const [dataLoadErrors, setDataLoadErrors] = useState<string[]>([]);
 
+  /**
+   * StrictMode-safe mounted ref.
+   * The cleanup sets `false`; the mount effect below sets it back to `true`,
+   * so React 18's double-invoke in dev doesn't permanently disable updates.
+   */
   const mountedRef = useRef(true);
 
   useEffect(() => {
+    mountedRef.current = true; // ✅ reset on every (re)mount
     return () => {
       mountedRef.current = false;
     };
@@ -336,9 +356,15 @@ export const OwnerProfileScreen: React.FC<OwnerProfileScreenProps> = ({
   }, [user.name, user.email, user.phone]);
 
   /* FETCHERS */
-  const fetchTurfs = useCallback(async () => {
+
+  /**
+   * Returns the owner's turfs.
+   * Throws on network / non-2xx failure so the caller can decide what to do.
+   */
+  const fetchTurfs = useCallback(async (): Promise<Turf[]> => {
     const response = await fetch(
       buildApiUrl(`/owners/${encodeURIComponent(user._id)}/turfs`),
+      { headers: { Accept: 'application/json' } },
     );
     const data = await parseApiResponse(response);
     const ownerTurfs = Array.isArray(data?.turfs)
@@ -350,48 +376,73 @@ export const OwnerProfileScreen: React.FC<OwnerProfileScreenProps> = ({
     return ownerTurfs;
   }, [user._id]);
 
-  const fetchBankDetails = useCallback(async () => {
+  /**
+   * Returns bank details, treating 404 as "none saved" (very common pattern).
+   * Never throws for the "no bank details yet" case.
+   */
+  const fetchBankDetails = useCallback(async (): Promise<BankDetails> => {
     const response = await fetch(
       buildApiUrl(`/owners/${encodeURIComponent(user._id)}/bank-details`),
+      { headers: { Accept: 'application/json' } },
     );
-    const data = await parseApiResponse(response);
-    if (!mountedRef.current) return;
-    if (data) {
-      setBankDetails({
-        accountHolderName: data.accountHolderName || '',
-        accountNumber: data.accountNumber || '',
-        ifscCode: data.ifscCode || '',
-      });
-    } else {
-      setBankDetails({ accountHolderName: '', accountNumber: '', ifscCode: '' });
-    }
+    const data = await parseApiResponse(response, { allow404: true });
+
+    const next: BankDetails = {
+      accountHolderName: data?.accountHolderName || '',
+      accountNumber: data?.accountNumber || '',
+      ifscCode: data?.ifscCode || '',
+    };
+
+    if (mountedRef.current) setBankDetails(next);
+    return next;
   }, [user._id]);
 
-  const fetchRecentBookings = useCallback(async () => {
+  const fetchRecentBookings = useCallback(async (): Promise<RecentBooking[]> => {
+    setFetchingBookings(true);
     try {
-      setFetchingBookings(true);
       const response = await fetch(
         buildApiUrl(`/owners/${encodeURIComponent(user._id)}/dashboard`),
+        { headers: { Accept: 'application/json' } },
       );
       const data = await parseApiResponse(response);
-      const bookings = Array.isArray(data?.recentBookings) ? data.recentBookings : [];
+      const bookings = Array.isArray(data?.recentBookings)
+        ? data.recentBookings
+        : [];
       if (mountedRef.current) setRecentBookings(bookings);
-    } catch (error) {
-      console.error('Failed to fetch recent bookings:', error);
-      if (mountedRef.current) setRecentBookings([]);
+      return bookings;
     } finally {
       if (mountedRef.current) setFetchingBookings(false);
     }
   }, [user._id]);
 
+  /**
+   * Runs all three fetches independently, collects errors, and surfaces them
+   * to the user instead of silently blanking sections.
+   */
   const fetchOwnerData = useCallback(async () => {
-    try {
-      setFetchingData(true);
-      await Promise.allSettled([fetchTurfs(), fetchBankDetails(), fetchRecentBookings()]);
-    } catch (error) {
-      console.error('Failed to fetch owner data:', error);
-    } finally {
-      if (mountedRef.current) setFetchingData(false);
+    setFetchingData(true);
+    setDataLoadErrors([]);
+
+    const errors: string[] = [];
+
+    const results = await Promise.allSettled([
+      fetchTurfs(),
+      fetchBankDetails(),
+      fetchRecentBookings(),
+    ]);
+
+    const labels = ['Turfs', 'Bank details', 'Recent bookings'];
+    results.forEach((result, index) => {
+      if (result.status === 'rejected') {
+        const message = getErrorMessage(result.reason, 'Unknown error');
+        console.error(`Owner data fetch failed [${labels[index]}]:`, result.reason);
+        errors.push(`${labels[index]}: ${message}`);
+      }
+    });
+
+    if (mountedRef.current) {
+      setDataLoadErrors(errors);
+      setFetchingData(false);
     }
   }, [fetchTurfs, fetchBankDetails, fetchRecentBookings]);
 
@@ -399,10 +450,11 @@ export const OwnerProfileScreen: React.FC<OwnerProfileScreenProps> = ({
     fetchOwnerData();
   }, [fetchOwnerData]);
 
-  const fetchCourts = useCallback(async (turfId: string) => {
+  const fetchCourts = useCallback(async (turfId: string): Promise<Court[]> => {
     try {
       const response = await fetch(
         buildApiUrl(`/turfs/${encodeURIComponent(turfId)}/courts`),
+        { headers: { Accept: 'application/json' } },
       );
       const data = await parseApiResponse(response);
       const courts = Array.isArray(data?.courts)
@@ -464,8 +516,15 @@ export const OwnerProfileScreen: React.FC<OwnerProfileScreenProps> = ({
         },
       );
       const data = await parseApiResponse(response);
-      const updatedUser = data?.user || data;
-      if (updatedUser && mountedRef.current) onUpdateUser?.(updatedUser);
+      const updatedUser: OwnerUser | undefined = data?.user || data;
+
+      if (updatedUser && mountedRef.current) {
+        // Keep local state in sync even if parent doesn't re-render the prop.
+        setName(updatedUser.name || trimmedName);
+        setEmail(updatedUser.email || trimmedEmail);
+        setPhone(updatedUser.phone || trimmedPhone);
+        onUpdateUser?.(updatedUser);
+      }
       setShowEditProfile(false);
       alert('Your profile has been updated successfully.');
     } catch (error) {
@@ -1023,6 +1082,45 @@ export const OwnerProfileScreen: React.FC<OwnerProfileScreenProps> = ({
           <h1 className="op-title">Profile</h1>
           <p className="op-page-subtitle">Manage your turfs, courts and payouts</p>
         </div>
+
+        {/* DATA LOAD ERROR BANNER (new) */}
+        {dataLoadErrors.length > 0 && (
+          <div
+            style={{
+              background: '#FEF2F2',
+              border: '1px solid #FECACA',
+              color: '#B91C1C',
+              borderRadius: 14,
+              padding: '12px 14px',
+              marginBottom: 16,
+              fontSize: 13,
+              lineHeight: 1.5,
+            }}
+          >
+            <strong>Could not load some data:</strong>
+            <ul style={{ margin: '6px 0 0 18px', padding: 0 }}>
+              {dataLoadErrors.map((err) => (
+                <li key={err}>{err}</li>
+              ))}
+            </ul>
+            <button
+              type="button"
+              onClick={() => fetchOwnerData()}
+              style={{
+                marginTop: 8,
+                background: 'transparent',
+                border: '1px solid #B91C1C',
+                color: '#B91C1C',
+                borderRadius: 8,
+                padding: '4px 10px',
+                cursor: 'pointer',
+                fontWeight: 600,
+              }}
+            >
+              Retry
+            </button>
+          </div>
+        )}
 
         {/* PROFILE CARD */}
         <div className="op-profile-card">

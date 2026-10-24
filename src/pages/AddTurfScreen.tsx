@@ -22,6 +22,10 @@ export interface AddTurfPayload {
 export interface AddTurfScreenProps {
   onBack?: () => void;
   onNavigateAddCourt?: (payload: AddTurfPayload) => void;
+  /** 👇 NEW: called after turf is created and user chooses "Back to Home" */
+  onComplete?: (turf?: any) => void;
+  /** 👇 NEW: called if user clicks "Skip for now" (or back from signup flow) */
+  onSkip?: () => void;
   user?: AuthUser;
   ownerId?: string;
 }
@@ -32,7 +36,7 @@ interface TurfImagePayload {
 }
 
 /* =========================================================
-   API CONFIGURATION
+   API CONFIGURATION (unchanged)
 ========================================================= */
 
 const RAW_API_BASE_URL: string = (
@@ -64,8 +68,6 @@ const validateApiUrl = (): void => {
     );
   }
 };
-
-/* ---------- image upload (web) ---------- */
 
 const uploadImageToBackend = async (file: File): Promise<string> => {
   if (!file) throw new Error('No image was selected.');
@@ -106,8 +108,6 @@ const uploadImageToBackend = async (file: File): Promise<string> => {
   return String(imageUrl);
 };
 
-/* ---------- small spinner ---------- */
-
 interface SpinnerProps {
   color?: string;
   size?: number;
@@ -132,6 +132,8 @@ const Spinner = ({ color = '#0B1220', size = 16 }: SpinnerProps) => (
 const AddTurfScreen = ({
   onBack,
   onNavigateAddCourt,
+  onComplete,   // 👇 NEW
+  onSkip,       // 👇 NEW
   user,
   ownerId: ownerIdProp,
 }: AddTurfScreenProps) => {
@@ -154,7 +156,18 @@ const AddTurfScreen = ({
 
   const [loading, setLoading] = useState<boolean>(false);
 
-  /* ---------- image pick ---------- */
+  /* ---------- header back ---------- */
+  // 👇 NEW: if parent provided onSkip (signup flow), go Home instead of browser back
+  const handleHeaderBack = () => {
+    if (onSkip) {
+      onSkip();
+    } else if (onBack) {
+      onBack();
+    } else {
+      window.history.back();
+    }
+  };
+
   const handleFileChange = async (
     e: React.ChangeEvent<HTMLInputElement>,
   ): Promise<void> => {
@@ -183,7 +196,6 @@ const AddTurfScreen = ({
     }
   };
 
-  /* ---------- geolocation ---------- */
   const getCurrentLocation = (): void => {
     if (locationLoading) return;
     if (!navigator.geolocation) {
@@ -219,7 +231,6 @@ const AddTurfScreen = ({
     );
   };
 
-  /* ---------- validation ---------- */
   const validateForm = (): boolean => {
     if (!name.trim()) {
       alert('Please enter the turf name.');
@@ -254,9 +265,7 @@ const AddTurfScreen = ({
       longitude < -180 ||
       longitude > 180
     ) {
-      alert(
-        'The selected latitude or longitude is outside the valid range.',
-      );
+      alert('The selected latitude or longitude is outside the valid range.');
       return false;
     }
     if (imageUploading) {
@@ -285,8 +294,6 @@ const AddTurfScreen = ({
         .filter(Boolean);
 
       const cleanOwnerId = ownerId.trim();
-
-      // At this point validation guarantees lat/lng are numbers
       const lat = latitude as number;
       const lng = longitude as number;
 
@@ -338,10 +345,26 @@ const AddTurfScreen = ({
         'Turf Submitted Successfully!\n\nYour turf has been submitted and is waiting for admin approval.\n\nClick OK to add a court, or Cancel to go back.',
       );
 
+      // 👇 NEW: route to Home after creation instead of only onBack
       if (goAddCourt) {
         onNavigateAddCourt?.({ turfId, turf: createdTurf });
+        // If parent didn't wire onNavigateAddCourt, fall back to Home
+        if (!onNavigateAddCourt) {
+          (onComplete ?? onSkip ?? (() => {
+            window.location.hash = '#home';
+          }))(createdTurf);
+        }
       } else {
-        onBack?.();
+        // User chose "go back" → Home
+        if (onComplete) {
+          onComplete(createdTurf);
+        } else if (onSkip) {
+          onSkip();
+        } else if (onBack) {
+          onBack();
+        } else {
+          window.location.hash = '#home';
+        }
       }
     } catch (err) {
       const message =
@@ -361,7 +384,12 @@ const AddTurfScreen = ({
       <div className="tb-addturf-scroll">
         {/* HEADER */}
         <div className="tb-header">
-          <button className="tb-back-button" onClick={onBack} aria-label="Back">
+          {/* 👇 NEW: use handleHeaderBack */}
+          <button
+            className="tb-back-button"
+            onClick={handleHeaderBack}
+            aria-label="Back"
+          >
             ‹
           </button>
           <div className="tb-header-text">
@@ -372,6 +400,45 @@ const AddTurfScreen = ({
             </p>
           </div>
         </div>
+
+        {/* 👇 NEW: Signup onboarding banner */}
+        {onSkip && (
+          <div
+            style={{
+              background: '#F4FBE6',
+              border: '1px solid #D9DCE7',
+              borderRadius: 14,
+              padding: '12px 14px',
+              marginBottom: 16,
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              gap: 12,
+            }}
+          >
+            <span style={{ fontSize: 13, color: '#6F9D28', fontWeight: 600 }}>
+              🎉 Welcome! Add your first turf to get started — or skip and
+              explore Home.
+            </span>
+            <button
+              type="button"
+              onClick={onSkip}
+              style={{
+                background: 'transparent',
+                border: '1px solid #6F9D28',
+                color: '#6F9D28',
+                borderRadius: 10,
+                padding: '6px 12px',
+                fontWeight: 700,
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+                fontFamily: 'inherit',
+              }}
+            >
+              Skip for now
+            </button>
+          </div>
+        )}
 
         {/* BASIC DETAILS */}
         <div className="tb-card">
